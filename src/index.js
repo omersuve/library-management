@@ -11,8 +11,8 @@ const port = process.env.PORT || 3000;
 
 const db = require("./models");
 
-db.sequelize.sync({ force: true }).then(() => {
-  console.log("Drop and re-sync db.");
+db.sequelize.sync({ alter: true }).then(() => {
+  console.log("Database synchronized");
 });
 
 app.get("/", (req, res) => {
