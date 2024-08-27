@@ -1,0 +1,17 @@
+CREATE TABLE Users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Books (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE UserBooks (
+    userId INTEGER REFERENCES Users(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    bookId INTEGER REFERENCES Books(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    userScore INTEGER,
+    category VARCHAR(50) CHECK (category IN ('past', 'present')),
+    PRIMARY KEY (userId, bookId)
+);
